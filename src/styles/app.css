@@ -1,0 +1,222 @@
+.page-shell {
+  min-height: 100vh;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 28px;
+  background: #0b1730;
+  color: white;
+}
+
+.brand {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.topbar-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.link-button {
+  border: none;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+}
+
+.primary-link,
+.primary-btn,
+.secondary-btn,
+.danger-btn {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.primary-link,
+.primary-btn {
+  background: #2563eb;
+  color: white;
+}
+
+.secondary-btn {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.danger-btn {
+  background: #dc2626;
+  color: white;
+}
+
+.hero-section {
+  display: flex;
+  justify-content: center;
+  padding: 80px 20px;
+}
+
+.hero-card,
+.section-card,
+.job-card,
+.auth-card,
+.modal-card {
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+.hero-card {
+  max-width: 800px;
+  padding: 48px;
+}
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.grid-two {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.job-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.section-card,
+.job-card {
+  padding: 20px;
+}
+
+.action-card:hover {
+  transform: translateY(-2px);
+}
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.auth-card,
+.form-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  padding: 28px;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  background: white;
+}
+
+.row {
+  display: flex;
+}
+
+.spread {
+  justify-content: space-between;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.gap-sm {
+  gap: 10px;
+}
+
+.info-text {
+  color: #1d4ed8;
+}
+
+.error-text {
+  color: #dc2626;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.modal-card {
+  width: 100%;
+  max-width: 520px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bell-link {
+  position: relative;
+  font-size: 22px;
+}
+
+.bell-badge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: #ef4444;
+  color: white;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+}
+
+.card-unread {
+  border: 2px solid #2563eb;
+}
+
+@media (max-width: 768px) {
+  .topbar {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .topbar-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .grid-two {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,78 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  STUDENT
+  COMPANY
+}
+
+enum ApplicationStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+}
+
+model User {
+  id            String         @id @default(uuid())
+  email         String         @unique
+  password      String
+  firstName     String?
+  lastName      String?
+  imgUrl        String?
+  role          Role
+  jobs          Job[]          @relation("CompanyJobs")
+  applications  Application[]  @relation("StudentApplications")
+  notifications Notification[]
+
+  @@map("users")
+}
+
+model Job {
+  id           String        @id @default(uuid())
+  title        String
+  description  String
+  location     String?
+  salary       String?
+  companyId    String
+  company      User          @relation("CompanyJobs", fields: [companyId], references: [id], onDelete: Cascade)
+  applications Application[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  @@map("jobs")
+}
+
+model Application {
+  id              String            @id @default(uuid())
+  studentId       String
+  jobId           String
+  resumeUrl       String
+  motivation      String
+  status          ApplicationStatus @default(PENDING)
+  companyResponse String?
+  student         User              @relation("StudentApplications", fields: [studentId], references: [id], onDelete: Cascade)
+  job             Job               @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+
+  @@unique([studentId, jobId])
+  @@map("applications")
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  userId    String
+  title     String
+  message   String
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("notifications")
+}
