@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-import '../styles/app.css';
+// import '../styles/app.css';
 
 const RegisterPage: React.FC = () => {
   const navigate = useNavigate();
@@ -42,7 +42,6 @@ const RegisterPage: React.FC = () => {
           <option value="STUDENT">Student</option>
           <option value="COMPANY">Company</option>
         </select>
-        <input name="imgUrl" placeholder="Profile image URL (optional)" value={form.imgUrl} onChange={handleChange} />
         <input name="password" type="password" placeholder="Password" value={form.password} onChange={handleChange} />
         <input name="repeatPassword" type="password" placeholder="Repeat password" value={form.repeatPassword} onChange={handleChange} />
         <button type="submit" className="primary-btn">Create account</button>

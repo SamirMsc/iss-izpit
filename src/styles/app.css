@@ -97,6 +97,10 @@
   gap: 20px;
 }
 
+.section-card {
+  margin-bottom: 40px;
+}
+
 .section-card,
 .job-card {
   padding: 20px;

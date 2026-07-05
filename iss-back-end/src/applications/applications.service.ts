@@ -15,7 +15,10 @@ export class ApplicationsService {
     private notificationsService: NotificationsService,
   ) {}
 
-  async apply(studentId: string, dto: CreateApplicationDto) {
+  async apply(
+  studentId: string,
+  dto: CreateApplicationDto & { resumeUrl: string },
+  )  {
     const student = await this.prisma.user.findUnique({ where: { id: studentId } });
     if (!student || student.role !== 'STUDENT') {
       throw new ForbiddenException('Only students can apply to jobs');

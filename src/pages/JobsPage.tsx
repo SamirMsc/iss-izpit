@@ -23,20 +23,36 @@ const JobsPage: React.FC<Props> = ({ user, onRefreshNotifications }) => {
     fetchJobs();
   }, []);
 
-  const handleApply = async (data: { resumeUrl: string; motivation: string }) => {
-    if (!selectedJob) return;
-    try {
-      await axios.post(
-        'http://localhost:3000/applications',
-        { jobId: selectedJob.id, ...data },
-        { withCredentials: true }
-      );
-      setMessage('Application submitted successfully.');
-      setSelectedJob(null);
-    } catch (err: any) {
-      setMessage(err?.response?.data?.message || 'Could not apply for this job.');
-    }
-  };
+  const handleApply = async (data: {
+  resume: File;
+  motivation: string;
+}) => {
+  if (!selectedJob) return;
+
+  try {
+    const formData = new FormData();
+
+    formData.append('jobId', String(selectedJob.id));
+    formData.append('resume', data.resume);
+    formData.append('motivation', data.motivation);
+
+    await axios.post(
+      'http://localhost:3000/applications',
+      formData,
+      {
+        withCredentials: true,
+      }
+    );
+
+    setMessage('Application submitted successfully.');
+    setSelectedJob(null);
+  } catch (err: any) {
+    setMessage(
+      err?.response?.data?.message ||
+      'Could not apply for this job.'
+    );
+  }
+};
 
   return (
     <div className="page-shell">

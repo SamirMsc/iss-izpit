@@ -36,7 +36,17 @@ const MyApplicationsPage: React.FC<Props> = ({ user, onRefreshNotifications }) =
             <div key={application.id} className="job-card">
               <h3>{application.job?.title || 'Job application'}</h3>
               <p><strong>Status:</strong> {application.status}</p>
-              <p><strong>Resume:</strong> {application.resumeUrl}</p>
+              {/* <p><strong>Resume:</strong> {application.resumeUrl}</p> */}
+              <p>
+                <strong>Resume:</strong>{" "}
+                <a
+                  href={`http://localhost:3000${application.resumeUrl}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View resume
+                </a>
+              </p>
               <p><strong>Motivation:</strong> {application.motivation}</p>
               <p><strong>Company response:</strong> {application.companyResponse || 'No answer yet'}</p>
             </div>

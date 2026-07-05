@@ -7,9 +7,5 @@ export class CreateApplicationDto {
 
   @IsString()
   @IsNotEmpty()
-  resumeUrl: string;
-
-  @IsString()
-  @IsNotEmpty()
   motivation: string;
 }
